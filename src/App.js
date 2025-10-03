@@ -1,14 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import './App.css';
+import { Routes, Route, Navigate } from "react-router-dom";
+import ListView from "./pages/ListView";
+import DetailView from "./pages/DetailView";
+
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<h1>Home Page</h1>} />
-        <Route path="/about" element={<h1>About Page</h1>} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<ListView />} />
+      <Route path="/detail/:id" element={<DetailView />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
 
