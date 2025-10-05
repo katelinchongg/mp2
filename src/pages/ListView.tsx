@@ -3,6 +3,7 @@ import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import type { PokemonListItem, PokemonListResponse } from "../types/pokemon";
+import { saveListOrder } from "../utils/listState";
 
 export default function ListView() {
   const [raw, setRaw] = useState<PokemonListItem[]>([]);
@@ -15,6 +16,7 @@ export default function ListView() {
       .then(res => setRaw(res.data.results))
       .catch(() => setRaw([])); // you can add a nicer error later
   }, []);
+  
 
   const filtered = useMemo(() => {
     const term = q.toLowerCase();
@@ -32,6 +34,15 @@ export default function ListView() {
         return sortDir === "asc" ? comp : -comp;
       });
   }, [raw, q, sortKey, sortDir]);
+
+  useEffect(() => {
+    const ids = filtered.map(p =>
+      parseInt(p.url.split("/").filter(Boolean).pop() || "0")
+    );
+    saveListOrder(ids);
+  }, [filtered]);
+  
+
 
   return (
     <div className="p-4 max-w-3xl mx-auto">

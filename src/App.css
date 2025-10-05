@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #fafafa;
+  color: #111827;
+  text-align: center;        /* 👈 Centers text */
+}
+
+/* Make main content centered & readable */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontally center children */
+}
+
+/* optional: keep inputs/selects neatly centered in a row */
+.controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.list {
+  display: inline-block;   /* Makes list centerable */
+  text-align: left;        /* Keeps items left-aligned */
+  margin-top: 1rem;
+}
