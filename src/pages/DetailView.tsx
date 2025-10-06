@@ -33,7 +33,7 @@ export default function DetailView() {
   }, [numericId]);
 
   const { prevId, nextId } = useMemo(() => {
-    const order = loadListOrder(); // array of ids
+    const order = loadListOrder(); 
     if (!order.length) {
       return { prevId: Math.max(1, numericId - 1), nextId: numericId + 1 };
     }

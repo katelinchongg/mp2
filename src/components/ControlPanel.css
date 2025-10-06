@@ -1,0 +1,16 @@
+.panel {
+  max-width: 640px; width: 100%;
+  margin: 18px auto; padding: 16px;
+  background: #eef2f7;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  display: grid; gap: 10px;
+}
+.input, .select {
+  width: 100%; padding: 10px 12px; border-radius: 8px;
+  border: 1px solid #cbd5e1; background: #fff;
+}
+.label { font-size: 14px; color: #475569; }
+.radios { display: flex; gap: 12px; align-items: center; }
+.radio { display: inline-flex; gap: 6px; align-items: center; color: #475569; }

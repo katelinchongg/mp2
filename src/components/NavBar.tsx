@@ -5,23 +5,13 @@ export default function NavBar() {
   return (
     <header className="navbar">
       <div className="nav-inner">
-        <div className="nav-brand">
-          <NavLink to="/" className="brand-link">Clear REACTive</NavLink>
-        </div>
+        <h1 className="brand">PokeDex</h1>
 
-        <nav className="nav-links" aria-label="Main">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}
-          >
+        <nav className="tabs" aria-label="Main">
+          <NavLink to="/" end className={({isActive}) => "tab" + (isActive ? " active" : "")}>
             List
           </NavLink>
-
-          <NavLink
-            to="/gallery"
-            className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}
-          >
+          <NavLink to="/gallery" className={({isActive}) => "tab" + (isActive ? " active" : "")}>
             Gallery
           </NavLink>
         </nav>

@@ -24,7 +24,7 @@ export default function GalleryView() {
       setLoading(true); 
       try {
         // 1) list → take first N (keep it quick)
-        const list = await api.get<PokemonListResponse>("/pokemon?limit=60");
+        const list = await api.get<PokemonListResponse>("/pokemon?limit=200");
         const items: PokemonListItem[] = list.data.results;
 
         // 2) fetch each pokemon details (for image + types)
