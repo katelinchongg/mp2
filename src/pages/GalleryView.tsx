@@ -1,4 +1,3 @@
-// src/pages/GalleryView.tsx
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client";
@@ -23,11 +22,8 @@ export default function GalleryView() {
     async function load() {
       setLoading(true); 
       try {
-        // 1) list → take first N (keep it quick)
         const list = await api.get<PokemonListResponse>("/pokemon?limit=200");
         const items: PokemonListItem[] = list.data.results;
-
-        // 2) fetch each pokemon details (for image + types)
         setLoading(true); setErr(null);
 
         const details = await Promise.all(
@@ -47,8 +43,6 @@ export default function GalleryView() {
         if (cancelled) return;
 
         setCards(details);
-
-        // collect unique types for filters
         const typesSet = new Set<string>();
         details.forEach((c) => c.types.forEach((t) => typesSet.add(t)));
         setAllTypes(Array.from(typesSet).sort());
@@ -65,7 +59,6 @@ export default function GalleryView() {
   const filtered = useMemo(() => {
     if (selected.size === 0) return cards;
     return cards.filter((c) => {
-      // require the card to include ALL selected types
       for (const t of selected) if (!c.types.includes(t)) return false;
       return true;
     });
@@ -81,8 +74,6 @@ export default function GalleryView() {
   return (
     <div className="p-4 max-w-6xl mx-auto">
       <h1 className="text-2xl font-bold mb-3">Gallery</h1>
-
-      {/* Filters */}
       <div className="flex flex-wrap gap-2 mb-4">
         {allTypes.map((t) => (
           <label key={t} className="flex items-center gap-1 border rounded px-2 py-1 cursor-pointer">
@@ -105,8 +96,6 @@ export default function GalleryView() {
       </div>
 
       {loading && <div>Loading…</div>}
-
-      {/* Card grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4">
         {filtered.map((c) => (
           <Link

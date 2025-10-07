@@ -42,10 +42,9 @@ body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background: #fafafa;
   color: #111827;
-  text-align: center;        /* 👈 Centers text */
+  text-align: center;   
 }
 
-/* Make main content centered & readable */
 main {
   max-width: 900px;
   margin: 0 auto;
@@ -55,10 +54,9 @@ main {
 .centered {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* horizontally center children */
+  align-items: center;  
 }
 
-/* optional: keep inputs/selects neatly centered in a row */
 .controls {
   display: flex;
   gap: 8px;
@@ -67,7 +65,7 @@ main {
   flex-wrap: wrap;
 }
 .list {
-  display: inline-block;   /* Makes list centerable */
-  text-align: left;        /* Keeps items left-aligned */
+  display: inline-block;   
+  text-align: left;       
   margin-top: 1rem;
 }

@@ -14,7 +14,7 @@ export default function ListView() {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
-  // --- Fetch Pokémon list ---
+  
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
